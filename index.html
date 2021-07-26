@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FCC: Technical Documentation Page</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav id="navbar" aria-label="Main Navigation">
+    <header>
+      <h1>React.js + JSX</h1>
+    </header>
+  
+    <ul class="nav-settings">
+      <li><a class="nav-link" href="#Introducing_JSX">Introducing JSX</a></li>
+      <li><a class="nav-link" href="#Why_JSX?">Why JSX?</a></li>
+      <li><a class="nav-link" href="#Embedding_Expressions_in_JSX">Embedding Expressions in JSX</a></li>
+      <li><a class="nav-link" href="#JSX_is_an_Expression_Too">JSX is an Expression Too</a></li>
+      <li><a class="nav-link" href="#Specifying_Attributes_with_JSX">Specifying Attributes with JSX</a></li>
+      <li><a class="nav-link" href="#Reference">Reference</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-doc">
+    <section id="Introducing_JSX" class="main-section offset">
+      <header>
+        <h2>Introducing JSX</h2>
+      </header>
+      <p>Consider this variable declaration:</p>
+      <pre class="code-big"><code><span class="code-aqua">const</span> element = &lt;<span class="code-orange">h1</span>&gt;Hello, world!&lt;/<span class="code-orange">h1</span>&gt;;</code></pre>
+      <p>This funny tag syntax is neither a string nor HTML.</p>
+      <p>It is called JSX, and it is a syntax extension to JavaScript. We recommend using it with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.</p>
+      <p>JSX produces React “elements”. We will explore rendering them to the DOM in the next section. Below, you can find the basics of JSX necessary to get you started.</p>
+    </section>
+  
+    <section id="Why_JSX?" class="main-section offset">
+      <header>
+        <h2>Why JSX?</h2>
+      </header>
+      <p>React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.</p>
+      <p>Instead of artificially separating technologies by putting markup and logic in separate files, React separates concerns with loosely coupled units called “components” that contain both. We will come back to components in a further section, but if you’re not yet comfortable putting markup in JS, <a class="link-website" href="https://www.youtube.com/watch?v=x7cQ3mrcKaY" target="_blank" rel="noopener noreferrer">this YouTube video about React</a> might convince you otherwise.</p>
+      <p>React doesn’t require using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.</p>
+      <p>With that out of the way, let’s get started!</p>
+    </section>
+    
+    <section id="Embedding_Expressions_in_JSX" class="main-section offset">
+      <header>
+        <h2>Embedding Expressions in JSX</h2>
+      </header>
+      <p>In the example below, we declare a variable called <code class="code-tiny">name</code> and then use it inside JSX by wrapping it in curly braces:</p>
+      <pre class="code-big"><code><span class="code-aqua">const</span> name = <span class="code-yellow">'Josh Perez'</span>;
+<span class="code-aqua">const</span> element = &lt;<span class="code-orange">h1</span>&gt;Hello, {name}&lt;/<span class="code-orange">h1</span>&gt;;
+
+ReactDOM<span class="code-green">.render</span>(
+  element,
+  document<span class="code-green">.getElementById</span>(<span class="code-yellow">'root'</span>)
+);</code></pre>
+      <p>You can put any valid JavaScript expression inside the curly braces in JSX. The following examples are all valid JavaScript expressions:</p>
+      <ul>
+        <li class="code-small"><span><code>2 + 2</code></span></li>
+        <li class="code-small"><span><code>7 - 4</code></span></li>
+        <li class="code-small"><span><code>9 * 5</code></span></li>
+        <li class="code-small"><span><code>user.firstName</code></span></li>
+        <li class="code-small"><span><code>formatName(user)</code></span></li>
+      </ul>
+      <p>In the example below, we embed the result of calling a JavaScript function, <code class="code-tiny">formatName(user)</code>, into an <code class="code-tiny">&lt;h1&gt;</code> element.</p>
+      <pre class="code-big"><code><span class="code-aqua">function</span> formatName(user) {
+  <span class="code-green">return</span> user.firstName <span class="code-orange">+</span> <span class="code-yellow">' '</span> <span class="code-orange">+</span> user.lastName;
+}
+
+<span class="code-aqua">const</span> user = {
+  firstName: <span class="code-yellow">'Harper'</span>,
+  lastName: <span class="code-yellow">'Perez'</span>
+};
+
+<span class="code-aqua">const</span> element = (
+  &lt;<span class="code-orange">h1</span>&gt;
+    Hello, {formatName(user)}!
+  &lt;/<span class="code-orange">h1</span>&gt;
+);
+
+ReactDOM<span class="code-green">.render</span>(
+  element,
+  document<span class="code-green">.getElementById</span>(<span class="code-yellow">'root'</span>)
+);</code></pre>
+      <p>We split JSX over multiple lines for readability. While it isn’t required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of automatic semicolon insertion.</p>
+    </section>
+    
+    <section id="JSX_is_an_Expression_Too" class="main-section offset">
+      <header>
+        <h2>JSX is an Expression Too</h2>
+      </header>
+      <p>After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.</p>
+      <p>This means that you can use JSX inside of <code class="code-tiny">if</code> statements and <code class="code-tiny">for</code> loops, assign it to variables, accept it as arguments, and return it from functions:</p>
+      <pre class="code-big"><code><span class="code-aqua">function</span> getGreeting(user) {
+  <span class="code-green">if</span> (user) {
+    <span class="code-green">return</span> &lt;<span class="code-orange">h1</span>&gt;Hello, {formatName(user)}!&lt;/<span class="code-orange">h1</span>&gt;;
+  }
+  <span class="code-green">return</span> &lt;<span class="code-orange">h1</span>&gt;Hello, Stranger.&lt;/<span class="code-orange">h1</span>&gt;;
+}</code></pre>
+    </section>
+    
+    <section id="Specifying_Attributes_with_JSX" class="main-section offset">
+      <header>
+        <h2>Specifying Attributes with JSX</h2>
+      </header>
+      <p>You may use quotes to specify string literals as attributes:</p>
+      <pre class="code-big"><code><span class="code-aqua">const</span> element = &lt;<span class="code-orange">div</span> <span class="code-green">tabIndex</span>=&quot;0&quot;&gt;&lt;/<span class="code-orange">div</span>&gt;;</code></pre>
+      <p>You may also use curly braces to embed a JavaScript expression in an attribute:</p>
+      <pre class="code-big"><code><span class="code-aqua">const</span> element = &lt;<span class="code-orange">img</span> <span class="code-green">src</span>={user.avatarUrl}&gt;&lt;/<span class="code-orange">img</span>&gt;;</code></pre>
+      <p>Don’t put quotes around curly braces when embedding a JavaScript expression in an attribute. You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.</p>
+    </section>
+    
+    <section id="Reference" class="main-section offset">
+      <header>
+        <h2>Reference</h2>
+      </header>
+      <p><a class="link-website" href="https://reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener noreferrer">All the documentation in this page</a> is taken from Reactjs.org.</p>
+    </section>
+  </main>
+
+  <!-- For running JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

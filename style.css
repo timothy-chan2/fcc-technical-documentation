@@ -1,0 +1,149 @@
+body {
+  font-family: Helvetica, Lucida Console;
+  color: #d3d3d3;
+  background-color: #1F1B24;
+  font-size: 1.5em;
+  display: grid;
+  grid-template-columns: auto 500px;
+}
+
+.nav-settings {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  display: flex;
+  padding: 10px 40px 10px 20px;
+  color: #B5B0B0;
+}
+
+.nav-link:hover, .nav-link:focus {
+  background-color: #363333;
+  color: white;
+  border-left: 6px solid #D0ABFC;
+  padding-right: 34px; /* To keep the solid right border from moving */
+}
+
+#navbar {
+  position: fixed;
+  background-color: #272121;
+  border-right: solid;
+  border-width: normal;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 3px 0 rgba(0, 0, 0, 0.7);
+}
+
+main {
+  position: relative;
+  left: 420px;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+h1 {
+  position: relative;
+  left: 40px;
+  color: #D0ABFC;
+}
+
+h2 {
+  color: #D0ABFC;
+}
+
+.link-website {
+  color: #03DAC6;
+}
+
+.code-big {
+  background-color: #363333;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px;
+}
+
+.code-tiny {
+  background-color: #363333;
+  color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 8px;
+}
+
+.code-small span {
+  background-color: #363333;
+  color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 8px;
+}
+
+.code-aqua {
+  color: #03DAC6;
+}
+
+.code-orange {
+  color: #FECB01;
+}
+
+.code-green {
+  color: #00FF00;
+}
+
+.code-yellow {
+  color: #F1F536;
+}
+
+.code-blue {
+  color: #A7C6FE;
+}
+
+@media (max-width: 1150px) {
+  #navbar {
+    max-height: 500px;
+    height: 180px;
+    border-right: none;
+    border-bottom: solid;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1;
+    width: 100%;
+    transition: top 1s;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.7);
+  }
+  
+  .nav-link {
+    padding: 4px 40px 4px 20px;
+  }
+  
+  main {
+    left: 25px;
+    top: 130px;
+    width: 95%;
+  }
+  
+  body {
+    font-size: 2em;
+    grid-template-columns: auto auto;
+  }
+  
+  h1 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  
+  /*Offset the page when jumping to section with nav-link to prevent being coverd by navbar*/
+  .offset:before { 
+    display: block; 
+    content: " "; 
+    height: 140px;
+    margin-top: -140px;
+    visibility: hidden;
+  }
+}
