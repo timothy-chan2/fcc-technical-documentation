@@ -1,0 +1,2 @@
+# fcc-technical-documentation
+Technical documentation page for JSX and React to fulfill the user stories on the following freeCodeCamp web design project: https://www.freecodecamp.org/learn/responsive-web-design/responsive-web-design-projects/build-a-technical-documentation-page
