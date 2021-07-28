@@ -107,7 +107,7 @@ h2 {
 @media (max-width: 1150px) {
   #navbar {
     max-height: 500px;
-    height: 180px;
+    height: 130px;
     border-right: none;
     border-bottom: solid;
     overflow-y: scroll;
@@ -123,17 +123,18 @@ h2 {
   }
   
   main {
-    left: 25px;
+    left: 15px;
     top: 130px;
     width: 95%;
   }
   
   body {
-    font-size: 2em;
+    font-size: 1.4em;
     grid-template-columns: auto auto;
   }
   
   h1 {
+    font-size: 1.3em;
     margin-top: 5px;
     margin-bottom: 0px;
   }
@@ -145,5 +146,28 @@ h2 {
     height: 140px;
     margin-top: -140px;
     visibility: hidden;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    font-size: 0.96em;
+  }
+
+  main {
+    left: 1px;
+  }
+
+  .nav-settings {
+    font-size: 1.3em;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  .code-big {
+    padding: 15px 2px 15px 2px;
+    margin: 0;
   }
 }
